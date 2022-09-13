@@ -13,6 +13,8 @@ const db = mysql.createConnection(
     mainMenu()
 );
 
+
+
 function mainMenu() {
     const questions = [
         {
@@ -20,22 +22,24 @@ function mainMenu() {
             name: "action",
             message: "What would you like to do?",
             choices: [
-                { name: "View All Employees", value: "Selection1" },
+                { name: "View Employees", value: "Selection1" },
                 { name: "Add Employee", value: "Selection2" },
                 { name: "Update Employee Role", value: "Selection3" },
-                { name: "View All Roles", value: "Selection4" },
+                { name: "View Roles", value: "Selection4" },
                 { name: "Add Role", value: "Selection5" },
-                { name: "View All Departments", value: "Selection6" },
+                { name: "View Departments", value: "Selection6" },
                 { name: "Add Department", value: "Selection7" },
                 { name: "Quit", value: "Selection8" },
 
             ]
         }
     ]
+    return questions
 };
 
+
 inquirer
-    .prompt(questions)
+    .prompt(mainMenu())
     .then(answers => {
         if (answers.action === 'Selection1') {
             db.query('SELECT id, first_name, last_name, role_id, manager_id FROM employee', function (err, results) {
