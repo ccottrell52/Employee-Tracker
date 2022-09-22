@@ -4,9 +4,7 @@
   "description": "Week 12 homework",
   "main": "index.js",
   "scripts": {
-    "scripts": {
-      "start": "node index.js"
-    },
+      "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,6 +19,7 @@
   "homepage": "https://github.com/ccottrell52/Employee-Tracker#readme",
   "dependencies": {
     "console.table": "^0.10.0",
+    "inquirer": "^8.2.4",
     "mysql": "^2.18.1",
     "mysql2": "^2.3.3"
   }

@@ -10,12 +10,15 @@ const db = mysql.createConnection(
         password: 'Bigboy18!',
         database: 'employees_db'
     },
-    mainMenu()
+    
 );
+db.connect(err => {
+    if(err) throw err
+    mainMenu()
+})
 
 
 
-function mainMenu() {
     const questions = [
         {
             type: "list",
@@ -34,12 +37,11 @@ function mainMenu() {
             ]
         }
     ]
-    return questions
-};
 
+function mainMenu() {
 
 inquirer
-    .prompt(mainMenu())
+    .prompt(questions)
     .then(answers => {
         if (answers.action === 'Selection1') {
             db.query('SELECT id, first_name, last_name, role_id, manager_id FROM employee', function (err, results) {
@@ -203,3 +205,4 @@ inquirer
             process.exit();
         }
     });
+}
